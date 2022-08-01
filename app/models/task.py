@@ -902,7 +902,7 @@ class Task(models.Model):
 
     def get_tile_base_url(self, tile_type):
         # plant is just a special case of orthophoto
-        if tile_type == 'plant':
+        if tile_type in ['plant','agri']:
             tile_type = 'orthophoto'
 
         return "/api/projects/{}/tasks/{}/{}/".format(self.project.id, self.id, tile_type)
@@ -911,6 +911,8 @@ class Task(models.Model):
         types = []
         if 'orthophoto.tif' in self.available_assets: types.append('orthophoto')
         if 'orthophoto.tif' in self.available_assets: types.append('plant')
+        if 'orthophoto.tif' in self.available_assets: types.append('agri')
+
         if 'dsm.tif' in self.available_assets: types.append('dsm')
         if 'dtm.tif' in self.available_assets: types.append('dtm')
 

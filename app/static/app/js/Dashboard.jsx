@@ -62,6 +62,14 @@ class Dashboard extends React.Component {
               {_("Add Project")}
             </button>
           </div>
+          <div className="text-right add-button">
+            <button type="button" 
+                    className="btn btn-primary btn-sm"
+                    onClick={this.handleAddProject}>
+              <i className="glyphicon glyphicon-plus"></i>
+              {_("please work")}
+            </button>
+          </div>
 
           <EditProjectDialog 
             saveAction={this.addNewProject}

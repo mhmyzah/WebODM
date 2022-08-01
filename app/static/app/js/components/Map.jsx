@@ -40,7 +40,7 @@ class Map extends React.Component {
   static propTypes = {
     showBackground: PropTypes.bool,
     tiles: PropTypes.array.isRequired,
-    mapType: PropTypes.oneOf(['orthophoto', 'plant', 'dsm', 'dtm']),
+    mapType: PropTypes.oneOf(['orthophoto', 'plant','agri', 'dsm', 'dtm']),
     public: PropTypes.bool,
     shareButtons: PropTypes.bool
   };
@@ -85,6 +85,8 @@ class Map extends React.Component {
               return _("Orthophoto");
           case "plant":
               return _("Plant Health");
+          case "agri":
+              return _("Plant agri");    
           case "dsm":
               return _("DSM");
           case "dtm":
@@ -126,6 +128,8 @@ class Map extends React.Component {
         let metaUrl = url + "metadata";
 
         if (type == "plant") metaUrl += "?formula=NDVI&bands=RGN&color_map=rdylgn";
+        if (type == "agri") metaUrl += "?formula=NDVI&bands=RGN&color_map=rdylgn";
+
         if (type == "dsm" || type == "dtm") metaUrl += "?hillshade=6&color_map=viridis";
 
         this.tileJsonRequests.push($.getJSON(metaUrl)
